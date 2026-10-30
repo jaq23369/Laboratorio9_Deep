@@ -44,7 +44,7 @@ def _limpiar(o):
 
 def _escribir(ruta, datos):
     ruta.parent.mkdir(parents=True, exist_ok=True)
-    ruta.write_text(json.dumps(_limpiar(datos), indent=1, ensure_ascii=False))
+    ruta.write_text(json.dumps(_limpiar(datos), indent=1, ensure_ascii=False), encoding="utf-8")
 
 
 def guardar_resultado(nombre, resultado, meta):
@@ -68,7 +68,7 @@ def guardar_iteracion(id_iter, datos):
 
 def cargar_iteracion(id_iter):
     ruta = C.RESULTADOS / "iteraciones" / f"{id_iter}.json"
-    return json.loads(ruta.read_text()) if ruta.exists() else None
+    return json.loads(ruta.read_text(encoding="utf-8")) if ruta.exists() else None
 
 
 def guardar_historia(modelo, meses, datos):
@@ -78,4 +78,4 @@ def guardar_historia(modelo, meses, datos):
 
 def cargar_metricas(nombre):
     ruta = C.RESULTADOS / "metricas" / f"{nombre}.json"
-    return json.loads(ruta.read_text()) if ruta.exists() else None
+    return json.loads(ruta.read_text(encoding="utf-8")) if ruta.exists() else None

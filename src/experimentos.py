@@ -90,10 +90,12 @@ def datos():
 def tabla_iteraciones(prefijo=None):
     filas = []
     for ruta in sorted((C.RESULTADOS / "iteraciones").glob("*.json")):
-        info = json.loads(ruta.read_text())
+        info = json.loads(ruta.read_text(encoding="utf-8"))
         if prefijo and not info["id"].startswith(prefijo):
             continue
         c = info["config"]
+        if not {"L", "H", "meses", "norm"} <= c.keys():
+            continue   # iteraciones de los modelos de librería (bl_, lgbm_ y nf_), con otro esquema
         filas.append({"id": info["id"], "modelo": c["modelo"], "L": c["L"], "H": c["H"],
                       "meses": c["meses"], "norm": c["norm"], "oculto": c["oculto"],
                       "capas": c["capas"], "dropout": c["dropout"], "lr": c["lr"],
@@ -200,7 +202,7 @@ def mejor_propio():
 def fase_semillas():
     ruta = C.RESULTADOS / "semillas.json"
     if ruta.exists():
-        return json.loads(ruta.read_text())
+        return json.loads(ruta.read_text(encoding="utf-8"))
     nombre = mejor_propio()
     base_id = cargar_metricas(nombre)["id_iteracion"]
     cfg = config_de(base_id)
@@ -227,7 +229,7 @@ def fase_reentreno():
     nombre = mejor_propio()
     ruta = C.RESULTADOS / "reentreno" / f"{nombre}.json"
     if ruta.exists():
-        return json.loads(ruta.read_text())
+        return json.loads(ruta.read_text(encoding="utf-8"))
     met = cargar_metricas(nombre)
     info0 = cargar_iteracion(met["id_iteracion"])
     cfg = info0["config"]
@@ -261,7 +263,7 @@ def fase_local():
     # Sección 5.3. El mejor modelo propio entrenado por cliente (10 clientes) contra el global
     ruta = C.RESULTADOS / "local_global.json"
     if ruta.exists():
-        return json.loads(ruta.read_text())
+        return json.loads(ruta.read_text(encoding="utf-8"))
     nombre = mejor_propio()
     met = cargar_metricas(nombre)
     cfg = config_de(met["id_iteracion"])

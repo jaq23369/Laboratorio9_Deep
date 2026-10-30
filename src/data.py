@@ -136,7 +136,7 @@ def construir_panel(forzar=False):
     filtrados = filtrar_clientes(horario)
     elegidos = elegir_subconjunto(filtrados)
     C.CLIENTES.write_text(json.dumps({"filtrados": filtrados, "elegidos": elegidos,
-                                      "semilla": C.SEMILLA}, indent=1))
+                                      "semilla": C.SEMILLA}, indent=1), encoding="utf-8")
     a_largo(horario.loc[C.INICIO:C.FIN, elegidos]).to_parquet(C.PANEL, index=False)
     return cargar_panel()
 
@@ -146,7 +146,7 @@ def cargar_panel():
 
 
 def cargar_clientes():
-    return json.loads(C.CLIENTES.read_text())
+    return json.loads(C.CLIENTES.read_text(encoding="utf-8"))
 
 
 def cargar_horario_todos():
