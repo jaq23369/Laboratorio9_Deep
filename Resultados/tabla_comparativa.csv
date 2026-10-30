@@ -1,0 +1,18 @@
+Modelo,Familia,L,Estrategia multi-paso,Covariables,Parámetros totales,Parámetros entrenables,Entrenamiento (s),Inferencia (s),Hardware,MAE,RMSE,WAPE,MASE,MASE H=168,MASE 22 al 28 dic,Pinball,Cobertura P10-P90
+Chronos-Bolt,Fundacional,2048,multi-salida,No,205292928,0,0.0,49.0,NVIDIA GeForce RTX 4060 Ti (CUDA),33.53,201.62,0.0594,0.7446,,1.3481,11.6,0.8
+iTransformer,Atención,168,multi-salida,Sí,6503448,6503448,910.6,30.6,NVIDIA GeForce RTX 4060 Ti (CUDA),35.48,170.3,0.0629,0.781,,1.3312,,
+N-HiTS,Residuales y convolucionales,168,multi-salida,Sí,4193826,4193826,140.5,27.9,NVIDIA GeForce RTX 4060 Ti (CUDA),35.51,174.86,0.0629,0.7844,0.9948,1.3193,,
+MLP,MLP y lineales,168,multi-salida,Sí,447514,447514,6.0,5.0,Apple M3 Max (MPS),37.37,183.28,0.0662,0.8194,1.0009,1.4664,,
+TCN,Residuales y convolucionales,168,multi-salida,Sí,155353,155353,241.4,25.5,NVIDIA GeForce RTX 4060 Ti (CUDA),37.97,191.38,0.0673,0.8351,,1.4852,,
+DLinear,MLP y lineales,336,multi-salida,No,16178,16178,17.5,5.3,Apple M3 Max (MPS),37.88,185.61,0.0671,0.8614,0.9872,1.8625,,
+NLinear,MLP y lineales,336,multi-salida,No,8090,8090,6.4,5.1,Apple M3 Max (MPS),37.79,184.87,0.067,0.8641,0.9854,1.8546,,
+Seq2seq,Encoder-decoder,168,encoder-decoder,Sí,405633,405633,1080.3,6.4,Apple M3 Max (MPS),40.46,200.62,0.0717,0.8657,,1.3853,,
+LightGBM,Árboles,168,recursiva,Sí,125811,125811,99.2,127.3,Intel Core i5-12400 (CPU),38.27,173.71,0.0678,0.867,,1.6085,,
+PatchTST,Atención,336,multi-salida,No,534043,534040,529.5,27.6,NVIDIA GeForce RTX 4060 Ti (CUDA),38.32,186.3,0.0679,0.8764,1.0042,1.808,,
+LSTM,Recurrentes,168,multi-salida,Sí,243864,243864,940.8,6.3,Apple M3 Max (MPS),42.03,192.54,0.0745,0.8962,,1.4144,,
+LSTM_AR,Recurrentes,168,autorregresiva,Sí,202881,202881,839.2,6.4,Apple M3 Max (MPS),42.47,196.59,0.0753,0.9087,,1.4273,,
+MSTL,Baselines,1344,multi-salida,No,0,0,0.0,503.1,Intel Core i5-12400 (CPU),39.76,194.03,0.0704,0.9228,,2.0398,,
+SeasonalNaive24,Baselines,24,multi-salida,No,0,0,0.0,0.4,Intel Core i5-12400 (CPU),47.49,237.69,0.0842,1.0337,,2.218,,
+SeasonalNaive168,Baselines,168,multi-salida,No,0,0,0.0,0.4,Intel Core i5-12400 (CPU),43.98,189.14,0.0779,1.1113,1.1197,1.6244,,
+DeepAR,Probabilísticos,168,autorregresiva,Sí,203013,203010,118.6,37.1,NVIDIA GeForce RTX 4060 Ti (CUDA),50.28,210.53,0.0891,1.1197,,1.7673,17.43,0.722
+Naive,Baselines,1,multi-salida,No,0,0,0.0,0.4,Intel Core i5-12400 (CPU),189.44,561.92,0.3357,4.3,,4.2145,,
