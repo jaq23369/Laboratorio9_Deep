@@ -1,0 +1,26 @@
+# Laboratorio 9 - Series de tiempo y forecasting
+# Probado con Python 3.12.13 en macOS (Apple M3 Max, entrenamiento en MPS)
+# En una PC con NVIDIA instalar primero torch con CUDA desde https://pytorch.org/get-started/locally/
+# (por ejemplo pip install torch --index-url https://download.pytorch.org/whl/cu128) y luego este archivo
+
+# base, datos y modelos propios
+torch==2.15.0
+numpy==2.5.4
+pandas==2.3.3
+pyarrow==26.0.0
+holidays==0.107
+matplotlib==3.11.2
+tqdm==4.70.1
+
+# modelos de librería
+statsforecast==2.1.1
+mlforecast==1.1.0
+lightgbm==4.7.0
+neuralforecast==3.3.0
+chronos-forecasting==2.3.2
+
+# notebooks
+ipykernel==7.4.0
+nbformat==5.11.1
+nbconvert==7.17.2
+jupyter_client==8.10.0
