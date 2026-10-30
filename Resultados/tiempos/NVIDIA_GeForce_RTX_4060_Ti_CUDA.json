@@ -1,0 +1,18 @@
+{
+ "hardware": "NVIDIA GeForce RTX 4060 Ti (CUDA)",
+ "epochs_medidos": 4,
+ "modelos": {
+  "DLinear": {
+   "id_referencia": "dl_L336_revin",
+   "t_epoch_s": 0.5856824749971565,
+   "muestras_epoch": 200000,
+   "batch": 1024
+  },
+  "LSTM": {
+   "id_referencia": "ls_o128",
+   "t_epoch_s": 4.92676654999741,
+   "muestras_epoch": 100000,
+   "batch": 1024
+  }
+ }
+}
