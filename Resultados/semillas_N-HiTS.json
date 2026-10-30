@@ -1,0 +1,34 @@
+{
+ "modelo": "N-HiTS",
+ "L": 168,
+ "corridas": [
+  {
+   "semilla": 42,
+   "MASE_val": 0.787652735999081,
+   "MASE_prueba": 0.7843982687326005,
+   "MAE_prueba": 35.51091181254069,
+   "WAPE_prueba": 0.06292480131760518,
+   "pasos": 2999
+  },
+  {
+   "semilla": 7,
+   "MASE_val": 0.7868961419390086,
+   "MASE_prueba": 0.7839982089101242,
+   "MAE_prueba": 35.39382729784603,
+   "WAPE_prueba": 0.06271732931960573,
+   "pasos": 2899
+  },
+  {
+   "semilla": 123,
+   "MASE_val": 0.8698180268262345,
+   "MASE_prueba": 0.8131489352481681,
+   "MAE_prueba": 36.92805893700409,
+   "WAPE_prueba": 0.06543596469508801,
+   "pasos": 1899
+  }
+ ],
+ "MASE_prueba_media": 0.793848470963631,
+ "MASE_prueba_desv": 0.016715889242406794,
+ "MASE_val_media": 0.8147889682547748,
+ "MASE_val_desv": 0.04765806410345264
+}

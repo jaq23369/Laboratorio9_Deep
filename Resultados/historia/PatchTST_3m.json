@@ -1,0 +1,9 @@
+{
+ "modelo": "PatchTST",
+ "meses": 3,
+ "MASE_val": 0.8582980350454407,
+ "MAE_val": 36.3487301778381,
+ "id": "nf_PatchTST_hist3",
+ "L": 336,
+ "t_entrenamiento_s": 380.38559279999754
+}
