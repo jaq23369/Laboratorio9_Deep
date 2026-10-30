@@ -2,6 +2,7 @@
 # Probado con Python 3.12.13 en macOS (Apple M3 Max, entrenamiento en MPS)
 # En una PC con NVIDIA instalar primero torch con CUDA desde https://pytorch.org/get-started/locally/
 # (por ejemplo pip install torch --index-url https://download.pytorch.org/whl/cu128) y luego este archivo
+# Los modelos de librería se corrieron en Windows con Python 3.12.4, torch 2.11.0+cu128 y las demás versiones de este archivo
 
 # base, datos y modelos propios
 torch==2.15.0

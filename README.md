@@ -18,19 +18,28 @@ src/
   experimentos.py    todas las corridas de los modelos propios
   medir_tiempos.py   tiempo por epoch de referencia para comparar máquinas
   graficas.py        estilo común de las figuras
+  modelos_libreria.py      envoltorios de StatsForecast, MLForecast (LightGBM), NeuralForecast y Chronos
+  experimentos_libreria.py todas las corridas de los modelos de librería
+  comparacion.py     tabla comparativa y gráficas de la sección 6
 notebooks/
   1_Datos_y_preparacion.ipynb    carga, limpieza, exploración, Dataset y auditoría de fugas
+  2_Investigacion.ipynb          herramientas de forecasting en PyTorch, con comprobaciones de formas
   3_Modelos_propios.ipynb        protocolo, modelos propios, iteraciones, estrategias, local contra global
+  4_Modelos_libreria.ipynb       baselines, LightGBM, N-HiTS, TCN, PatchTST, iTransformer, DeepAR y Chronos
+  5_Comparacion_y_discusion.ipynb tabla comparativa, gráficas, pronósticos de prueba y discusión
 data/processed/      panel_horario.parquet (unique_id, ds, y), calendario.parquet, clientes.json
 Resultados/
   pronosticos/       pronósticos de prueba de cada modelo
   metricas/          métricas de prueba y datos de la tabla comparativa de cada modelo
-  iteraciones/       registro de cada iteración de hiperparámetros
+  iteraciones/       registro de cada iteración de hiperparámetros (modelos propios, bl_, lgbm_ y nf_)
   historia/          MASE de validación según meses de historia
-  reentreno/         pronósticos y métricas del mejor modelo propio reentrenado cada mes
+  reentreno/         pronósticos y métricas de los modelos reentrenados cada mes (MLP, N-HiTS, LightGBM y el mejor baseline)
   tiempos/           tiempo por epoch de referencia de cada máquina (src/medir_tiempos.py)
-  semillas.json      MASE del mejor modelo propio con 3 semillas
+  semillas.json      MASE del mejor modelo propio (MLP) con 3 semillas
+  semillas_N-HiTS.json  MASE del mejor modelo de deep learning de librería con 3 semillas
   local_global.json  modelo local contra global en 10 clientes
+  tabla_comparativa.csv      tabla de la sección 6 ordenada por MASE
+  pronosticos_prueba.csv.gz  unique_id, ds, modelo y y_hat de todos los modelos (comprimido, el CSV pesa más de 200 MB)
 Figuras/             gráficas de los notebooks
 ```
 
@@ -61,7 +70,14 @@ Figuras/             gráficas de los notebooks
 
    En una Mac con M3 Max (MPS) son 47 iteraciones y unas 3 horas de entrenamiento, casi todo en las LSTM y el seq2seq.
 
-4. Ejecutar los notebooks en orden desde la carpeta `notebooks/`.
+4. Entrenar y evaluar los modelos de librería. También guarda todo en `Resultados/` y salta lo que ya existe, y se puede correr una sola fase, por ejemplo `python -m src.experimentos_libreria fase_nf`. Las fases son `fase_baselines`, `fase_lightgbm`, `fase_chronos`, `fase_nf`, `fase_deepar`, `fase_patchtst`, `fase_reentreno_baseline`, `fase_reentreno_lightgbm`, `fase_semillas_nf`, `fase_reentreno_nf` y `fase_h168`. En una PC con una RTX 4060 Ti de 8 GB y un i5-12400 toda la tanda tarda unas 2.5 horas, con MSTL (unos 17 minutos con los 12 hilos) y las redes de NeuralForecast como lo más largo. Chronos baja sus pesos de Hugging Face la primera vez (`amazon/chronos-bolt-base`, unos 800 MB).
+
+   ```bash
+   python -m src.experimentos_libreria
+   python -m src.medir_tiempos
+   ```
+
+5. Ejecutar los notebooks en orden desde la carpeta `notebooks/`. El notebook 5 usa los tiempos de las dos máquinas de `Resultados/tiempos/` para pasar los de la Mac a la escala de la GPU.
 
 ## Decisiones principales
 
@@ -72,6 +88,10 @@ Figuras/             gráficas de los notebooks
 | Protocolo | origen móvil diario a las 00:00 con datos hasta las 23:00 del día anterior, 92 orígenes en prueba |
 | Normalización | z-score por serie con estadísticos de entrenamiento |
 | MASE | escala igual al MAE del seasonal naive de 24 h dentro de entrenamiento, por cliente |
+| Modelos de librería | Se normaliza cada cliente con el z-score de entrenamiento antes de pasar los datos a la librería, así ningún estadístico de validación ni de prueba entra al modelo. Las redes de NeuralForecast se entrenan con `fit` (`val_size = 2208`) y pronostican origen por origen con `predict`, para pasar por el mismo `backtest` |
+| Transformer elegido | iTransformer, porque TFT necesitó casi 10 GB de RAM en los primeros 100 pasos con las 218 mil ventanas de validación |
+| Hardware | Los modelos propios se entrenaron en una Mac M3 Max (MPS), las redes de librería y Chronos en una PC con RTX 4060 Ti (CUDA), y los baselines y LightGBM en el CPU de la PC |
+| Codificación | Todos los JSON se leen y se escriben en UTF-8 (en Windows `write_text` usa cp1252 por defecto) |
 
 ## Cómo evaluar un modelo nuevo
 
