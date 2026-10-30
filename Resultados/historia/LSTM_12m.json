@@ -1,0 +1,8 @@
+{
+ "modelo": "LSTM",
+ "meses": 12,
+ "MASE_val": 0.9330493626345162,
+ "MAE_val": 41.28405390269864,
+ "id": "ls_hist12",
+ "t_entrenamiento_s": 894.8331303329978
+}

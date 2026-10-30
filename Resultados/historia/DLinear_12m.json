@@ -1,0 +1,8 @@
+{
+ "modelo": "DLinear",
+ "meses": 12,
+ "MASE_val": 0.8376831127742187,
+ "MAE_val": 35.487478395563635,
+ "id": "dl_hist12",
+ "t_entrenamiento_s": 24.379631291001715
+}

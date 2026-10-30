@@ -1,0 +1,31 @@
+{
+ "modelo": "MLP",
+ "id_iteracion": "mlp_revin",
+ "corridas": [
+  {
+   "semilla": 42,
+   "MASE_val": 0.8040676767381453,
+   "MASE_prueba": 0.8194214529929128,
+   "MAE_prueba": 37.368802230591605,
+   "WAPE_prueba": 0.06621695517844889
+  },
+  {
+   "semilla": 7,
+   "MASE_val": 0.7991597181127754,
+   "MASE_prueba": 0.8098160197398354,
+   "MAE_prueba": 37.147404817693506,
+   "WAPE_prueba": 0.06582464229466861
+  },
+  {
+   "semilla": 123,
+   "MASE_val": 0.8091197049672167,
+   "MASE_prueba": 0.8249480225269128,
+   "MAE_prueba": 37.719014797463565,
+   "WAPE_prueba": 0.06683752657649349
+  }
+ ],
+ "MASE_prueba_media": 0.8180618317532203,
+ "MASE_prueba_desv": 0.007657075455002162,
+ "MASE_val_media": 0.8041156999393791,
+ "MASE_val_desv": 0.004980167086158211
+}

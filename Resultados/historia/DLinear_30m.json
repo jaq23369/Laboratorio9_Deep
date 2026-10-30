@@ -1,0 +1,8 @@
+{
+ "modelo": "DLinear",
+ "meses": 30,
+ "MASE_val": 0.8347899394161206,
+ "MAE_val": 35.40060883610455,
+ "id": "dl_L336_revin",
+ "t_entrenamiento_s": 17.512136833000113
+}
