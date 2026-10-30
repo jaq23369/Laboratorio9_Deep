@@ -1,0 +1,18 @@
+{
+ "modelo": "MSTL",
+ "fijo": {
+  "MAE": 39.7576680461227,
+  "RMSE": 194.0326741168307,
+  "WAPE": 0.07044998945282165,
+  "MASE": 0.9227574948393096,
+  "MASE_navidad": 2.0397923865626146
+ },
+ "reentreno_mensual": {
+  "MAE": 39.7576680461227,
+  "RMSE": 194.0326741168307,
+  "WAPE": 0.07044998945282165,
+  "MASE": 0.9227574948393096,
+  "MASE_navidad": 2.0397923865626146
+ },
+ "nota": "MSTL se reajusta en cada origen con las últimas 8 semanas"
+}

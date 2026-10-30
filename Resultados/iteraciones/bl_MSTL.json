@@ -1,0 +1,11 @@
+{
+ "id": "bl_MSTL",
+ "config": {
+  "modelo": "MSTL",
+  "contexto_h": 1344
+ },
+ "MASE_val": 0.9013259962252823,
+ "MAE_val": 37.60785767352837,
+ "WAPE_val": 0.05829092449377982,
+ "t_inferencia_s": 507.6320995999995
+}

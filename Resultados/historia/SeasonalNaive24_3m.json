@@ -1,0 +1,6 @@
+{
+ "modelo": "SeasonalNaive24",
+ "meses": 3,
+ "MASE_val": 0.9662372605164866,
+ "MAE_val": 41.21732983449771
+}

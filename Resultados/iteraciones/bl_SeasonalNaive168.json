@@ -1,0 +1,10 @@
+{
+ "id": "bl_SeasonalNaive168",
+ "config": {
+  "modelo": "SeasonalNaive168"
+ },
+ "MASE_val": 1.1520583069838974,
+ "MAE_val": 47.79613646305065,
+ "WAPE_val": 0.07408241665472916,
+ "t_inferencia_s": 0.34762310000223806
+}

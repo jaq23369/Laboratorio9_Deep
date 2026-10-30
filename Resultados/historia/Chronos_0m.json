@@ -1,0 +1,7 @@
+{
+ "modelo": "Chronos",
+ "meses": 0,
+ "MASE_val": 0.7465327523103158,
+ "MAE_val": 31.302676967512276,
+ "nota": "zero-shot, sin entrenamiento, 2048 horas de contexto"
+}

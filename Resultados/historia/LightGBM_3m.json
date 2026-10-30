@@ -1,0 +1,8 @@
+{
+ "modelo": "LightGBM",
+ "meses": 3,
+ "MASE_val": 0.9053353957659028,
+ "MAE_val": 38.96516977906922,
+ "id": "lgbm_hist3",
+ "t_entrenamiento_s": 12.517393800000718
+}
